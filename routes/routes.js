@@ -9,18 +9,14 @@ todosRouter.get('/', (req, res) => {
     });
 });
 
-module.exports = {
-  todosRouter
-};
-
 router.post('/', (req, res) => {
-  const todoTitle = req.body.todoTitle
+  const todoName = req.body.todoTitle
 
   // call catagorize function to get category
   const category = 1;
 
   const todo = {
-    title: todoTitle,
+    name: todoName,
     category: category
   }
 
@@ -29,3 +25,7 @@ router.post('/', (req, res) => {
     res.send('Added to the database!')
    });
 });
+
+module.exports = {
+  todosRouter
+};
