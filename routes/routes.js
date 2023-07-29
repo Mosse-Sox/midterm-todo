@@ -9,23 +9,3 @@ todosRouter.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-  const todoName = req.body.todoTitle
-
-  // call catagorize function to get category
-  const category = 1;
-
-  const todo = {
-    name: todoName,
-    category: category
-  }
-
-  todosQueries.addTodo(todo)
-   .then(result => {
-    res.send('Added to the database!')
-   });
-});
-
-module.exports = {
-  todosRouter
-};
