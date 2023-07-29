@@ -1,1 +1,1 @@
-INSERT INTO catagories (name) VALUES ('Books'), ('Films'), ('Food'), ('Products');
+INSERT INTO categories (name) VALUES ('Books'), ('Films'), ('Food'), ('Products');

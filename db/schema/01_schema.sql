@@ -4,8 +4,8 @@ DROP TABLE IF EXISTS categories CASCADE;
 CREATE TABLE todos (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP,
-  completed_at TIMESTAMP,
+  created_at TIMESTAMP DEFAULT Now(),
+  completed_at TIMESTAMP DEFAULT NULL,
   category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE
 );
 
