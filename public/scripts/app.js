@@ -10,7 +10,7 @@ $(document).ready(function () {
     $.ajax({
       method: 'POST',
       url: '/todos',
-      data: form.serialize()
+      data: $(this).serialize()
     }).then(function(response) {
       form[0].reset();
       // console.log(response);
