@@ -1,6 +1,7 @@
 const express = require("express");
 const todosRouter = express.Router();
 const todosQueries = require("../db/queries/todos-queries");
+const categorize = require("./categories");
 
 todosRouter.get("/", (req, res) => {
   todosQueries
@@ -10,7 +11,7 @@ todosRouter.get("/", (req, res) => {
     })
     .catch((err) => {
       console.error(err.message);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     });
 });
 
@@ -18,18 +19,16 @@ todosRouter.post("/", (req, res) => {
   const todoName = req.body.name;
   console.log(todoName);
   // call catagorize function to get category
-  const category = 1;
+  categorize(todoName)
+    .then((category) => {
+      const todo = {
+        name: todoName,
+        category: category,
+      };
 
-  const todo = {
-    name: todoName,
-    category: category,
-  };
-
-  todosQueries
-    .addTodo(todo)
-    .then((result) => {
-      // console.log(result);
-      res.status(201).send();
+      todosQueries.addTodo(todo).then((result) => {
+        res.status(201).send();
+      });
     })
     .catch((err) => {
       console.error(err.message);

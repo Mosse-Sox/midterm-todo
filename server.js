@@ -5,7 +5,7 @@ const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 const app = express();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT

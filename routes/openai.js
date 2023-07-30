@@ -1,6 +1,6 @@
 const request = require('request');
 
-require('dotenv').config({ path: '../../.env' });
+require('dotenv').config({ path: '../.env' });
 
 function openAIChatCompletion(prompt) {
   const apiKey = process.env.CHATGPT_API_KEY; // Replace this with your actual OpenAI API key
@@ -42,13 +42,6 @@ function openAIChatCompletion(prompt) {
   });
 }
 
-// Example usage:
-const prompt = 'In one word, all lowercase no period, can you tell me if sushi is a book, film, food, or product?';
-openAIChatCompletion(prompt)
-  .then((response) => {
-    console.log(response.content);
-  })
-  .catch((error) => {
-    console.error('Error:', error.message);
-  });
+module.exports = openAIChatCompletion;
+
 
