@@ -10,12 +10,13 @@ todosRouter.get("/", (req, res) => {
     })
     .catch((err) => {
       console.error(err.message);
+      res.status(500).json({ error: 'Internal Server Error' });
     });
 });
 
 todosRouter.post("/", (req, res) => {
-  const todoName = req.body.todoTitle;
-
+  const todoName = req.body.name;
+  console.log(todoName);
   // call catagorize function to get category
   const category = 1;
 
@@ -28,7 +29,7 @@ todosRouter.post("/", (req, res) => {
     .addTodo(todo)
     .then((result) => {
       console.log(result);
-      res.send(result);
+      res.status(201).send();
     })
     .catch((err) => {
       console.error(err.message);
