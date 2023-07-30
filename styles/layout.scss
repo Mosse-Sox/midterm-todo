@@ -1,6 +1,11 @@
 // See: https://sass-lang.com/
+ @import "constants";
 
-body,
 html {
   margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+
 }

@@ -1,6 +1,7 @@
+/* eslint-disable func-style */
 const request = require('request');
-
-require('dotenv').config({ path: '../.env' });
+// require('dotenv').config({ path: '../.env' });
+require('dotenv').config({ path: '.env' });
 
 function openAIChatCompletion(prompt) {
   const apiKey = process.env.CHATGPT_API_KEY; // Replace this with your actual OpenAI API key
