@@ -28,7 +28,7 @@ todosRouter.post("/", (req, res) => {
   todosQueries
     .addTodo(todo)
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       res.status(201).send();
     })
     .catch((err) => {

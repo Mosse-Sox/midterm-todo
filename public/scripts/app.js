@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
+// /* eslint-disable no-undef */
 // Client facing scripts here
-const loadTodos = require('./todos-helper');
 
 $(document).ready(function () {
   // add an event listener that listens for the submit event
@@ -9,12 +8,11 @@ $(document).ready(function () {
 
     $.ajax({
       method: 'POST',
-      url: '/',
-      data: $(this).serialize(),
-      datatype: 'json',
+      url: '/todos',
+      data: form.serialize()
     }).then(function(response) {
-      $(this)[0].reset();
-      console.log(response);
+      form[0].reset();
+      // console.log(response);
       loadTodos();
     }).catch((error) => {
       console.error('Error:', error.status, error.responseText);
