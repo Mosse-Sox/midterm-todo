@@ -13,20 +13,24 @@
     <link rel="stylesheet" href="/vendor/border-box.css" />
     <link rel="stylesheet" href="/styles/main.css" />
     <link rel="stylesheet" href="/styles/layout.css" />
-
+    <!-- App JS -->
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script defer src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/todos-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
+
+
   </head>
   <body>
     <h1>Hello TODO WHAT!</h1>
     <main>
-      <div>
-        <form id="todo-form">
-          <input type="text" id="todo-input" />
+      <div class="todo-input-container">
+        <form id="create-todo-id" method="post" action="/todos">
+          <input type="text" name="name" id="todo-input" required/>
           <button type="submit">Add Todo</button>
         </form>
       </div>
-      <div>
+      <div class="todo-list-container">
         <div>
           <ul id="todo-food">
             <li>Sushi</li>
