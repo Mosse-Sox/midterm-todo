@@ -10,15 +10,17 @@ $(document).ready(function () {
     $.ajax({
       method: 'POST',
       url: '/todos',
-      data: $(this).serialize(),
-      datatype: 'json',
-    }).then((response) => {
-      $(this)[0].reset();
-      console.log(response);
+      data: form.serialize()
+    }).then(function(response) {
+      form[0].reset();
+      // console.log(response);
       loadTodos();
     }).catch((error) => {
       console.error('Error:', error.status, error.responseText);
     });
+
+    const $form = $('#todo-input');
+    $form.val('');
   });
 
   loadTodos();
