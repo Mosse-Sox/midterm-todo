@@ -1,21 +1,20 @@
 /* eslint-disable no-undef */
-const renderTodos = (container, todos) => {
-  container.empty();
-  const $container = $('.todo-list-container');
-
-  for (const todo of todos) {
-    const $todo = createTodoElement(todo);
-    $container.prepend($todo);
-  }
-};
-
-const createTodoElement = (todos) => {
-
-  const safeText = DOMPurify.sanitize(todos.content.text);
+const createTodoElement = (todo) => {
+  const safeText = DOMPurify.sanitize(todo);
   const $todo = `
     <li>${safeText}</li>
   `;
   return $todo;
+};
+
+const renderTodos = (container, todos) => {
+  container.empty();
+
+  for (const todo of todos) {
+    console.log(todo.name);
+    const $todo = createTodoElement(todo.name);
+    container.prepend($todo);
+  }
 };
 
 const loadTodos = function () {
@@ -24,10 +23,10 @@ const loadTodos = function () {
     url: '/todos',
     datatype: 'json'
   }).then((response) => {
-    renderTodos(response);
+    const $container = $('#todo-products');
+    renderTodos($container, response);
   }).catch((error) => {
     console.error('Error:', error.status, error.responseText);
   });
 };
 
-module.exports = { renderTodos, createTodoElement, loadTodos };
