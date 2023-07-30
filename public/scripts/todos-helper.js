@@ -20,6 +20,7 @@ const renderTodos = (todos) => {
   food.empty();
 
   for (const todo of todos) {
+    console.log(todo);
     const $todo = createTodoElement(todo);
 
     if (todo.category_id === 1) {
