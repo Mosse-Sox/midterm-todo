@@ -9,14 +9,16 @@ $(document).ready(function () {
     $.ajax({
       method: 'POST',
       url: '/todos',
-      data: form.serialize()
+      data: $(this).serialize()
     }).then(function(response) {
-      form[0].reset();
       // console.log(response);
       loadTodos();
     }).catch((error) => {
       console.error('Error:', error.status, error.responseText);
     });
+
+    const $form = $('#todo-input');
+    $form.val('');
   });
 
   loadTodos();
