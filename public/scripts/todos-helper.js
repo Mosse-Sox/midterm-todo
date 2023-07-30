@@ -21,7 +21,16 @@ const renderTodos = (todos) => {
 
   for (const todo of todos) {
     const $todo = createTodoElement(todo);
-    products.prepend($todo);
+
+    if (todo.category_id === 1) {
+      books.prepend($todo);
+    } else if (todo.category_id === 2) {
+      films.prepend($todo);
+    } else if (todo.category_id === 3) {
+      food.prepend($todo);
+    } else if (todo.category_id === 4) {
+      products.prepend($todo);
+    }
   }
 };
 
