@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/lists.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <!--  Google Fonts -->
@@ -31,13 +32,13 @@
 <body>
   <h1>todos</h1>
   <img src="/home/labber/midterm-todo/public/images">
-  <main>
     <div class="todo-input-container">
       <form id="create-todo-id" method="post" action="/todos">
         <input type="text" name="name" id="todo-input" required />
         <button type="submit">Add Todo</button>
       </form>
     </div>
+    <main>
     <div class="todo-list-container">
       <div>
         <ul id="todo-food">
