@@ -17,7 +17,6 @@ todosRouter.get("/", (req, res) => {
 
 todosRouter.post("/", (req, res) => {
   const todoName = req.body.name;
-  console.log(todoName);
   // call catagorize function to get category
   categorize(todoName)
     .then((category) => {

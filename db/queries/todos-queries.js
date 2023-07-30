@@ -2,7 +2,6 @@ const db = require("../connection");
 
 const getTodos = () => {
   return db.query("SELECT * FROM to_dos;").then((response) => {
-    console.log(response.rows);
     return response.rows;
   });
 };
@@ -14,7 +13,6 @@ const addTodo = (todo) => {
       todo.category,
     ])
     .then((response) => {
-      console.log("added to db");
       return response;
     });
 };
