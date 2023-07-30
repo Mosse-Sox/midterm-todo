@@ -1,4 +1,5 @@
 const request = require('request');
+
 require('dotenv').config({ path: '../../.env' });
 
 function openAIChatCompletion(prompt) {
