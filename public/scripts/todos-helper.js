@@ -1,19 +1,27 @@
 /* eslint-disable no-undef */
 const createTodoElement = (todo) => {
-  const safeText = DOMPurify.sanitize(todo);
+  const safeText = DOMPurify.sanitize(todo.name);
   const $todo = `
     <li>${safeText}</li>
   `;
   return $todo;
 };
 
-const renderTodos = (container, todos) => {
-  container.empty();
+const renderTodos = (todos) => {
+
+  const products = $('#todo-products');
+  const films = $('#todo-films');
+  const books = $('#todo-books');
+  const food = $('#todo-food');
+
+  products.empty();
+  films.empty();
+  books.empty();
+  food.empty();
 
   for (const todo of todos) {
-    console.log(todo.name);
-    const $todo = createTodoElement(todo.name);
-    container.prepend($todo);
+    const $todo = createTodoElement(todo);
+    products.prepend($todo);
   }
 };
 
@@ -23,8 +31,7 @@ const loadTodos = function () {
     url: '/todos',
     datatype: 'json'
   }).then((response) => {
-    const $container = $('#todo-products');
-    renderTodos($container, response);
+    renderTodos(response);
   }).catch((error) => {
     console.error('Error:', error.status, error.responseText);
   });
