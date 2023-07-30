@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     $.ajax({
       method: 'POST',
-      url: '/',
+      url: '/todos',
       data: $(this).serialize(),
       datatype: 'json',
     }).then((response) => {
