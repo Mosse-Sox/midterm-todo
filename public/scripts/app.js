@@ -12,7 +12,7 @@ $(document).ready(function () {
       url: '/',
       data: $(this).serialize(),
       datatype: 'json',
-    }).then(function(response) {
+    }).then((response) => {
       $(this)[0].reset();
       console.log(response);
       loadTodos();
