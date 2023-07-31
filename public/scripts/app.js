@@ -20,5 +20,16 @@ $(document).ready(function () {
     $form.val('');
   });
 
+
+
+  $('.todo-list-container').on('click', '.deleteb', function(event) {
+    event.preventDefault();
+
+    const $listItem = $(this).closest('li');
+    const todoId = $listItem.attr('id');
+
+    deleteTodo(todoId);
+  });
+
   loadTodos();
 });

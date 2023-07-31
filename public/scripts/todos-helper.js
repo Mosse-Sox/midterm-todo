@@ -2,10 +2,10 @@
 const createTodoElement = (todo) => {
   const safeText = DOMPurify.sanitize(todo.name);
   const $todo = `
-    <li>
+    <li id='${todo.id}'>
     <input type="checkbox" class="todo-checkbox">
     <p class="todo-text-html">${safeText}</p>
-    <button class="delete-button">X</button>
+    <button class="deleteb" type="button">X</button>
     </li>`;
 
   return $todo;
@@ -51,4 +51,18 @@ const loadTodos = function () {
     });
 };
 
-const deleteTodo = function () {};
+const deleteTodo = function (todo_id) {
+  $.ajax({
+    method: "POST",
+    url: `/todos/${todo_id}`
+  })
+    .then((result) => {
+      console.log(result);
+      loadTodos();
+    })
+    .catch((error) => {
+      console.error("Error:", error.status, error.responseText);
+    });
+};
+
+
