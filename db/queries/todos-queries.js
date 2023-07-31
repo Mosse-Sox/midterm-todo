@@ -18,6 +18,15 @@ const addTodo = (todo) => {
     });
 };
 
+const deleteTodo = (todo_id) => {
+  return db
+    .query("DELETE FROM to_dos WHERE to_dos.id = $1", [todo_id])
+    .then((response) => {
+      console.log(response);
+      return response;
+    });
+};
+
 const updateTodo = (todo) => {
   return db
     .query("UPDATE to_dos SET completed_at = CURRENT_TIMESTAMP WHERE id = $1", [
@@ -31,5 +40,6 @@ const updateTodo = (todo) => {
 module.exports = {
   getTodos,
   addTodo,
+  deleteTodo,
   updateTodo
 };

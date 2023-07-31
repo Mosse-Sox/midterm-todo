@@ -22,12 +22,14 @@
   div {
     width: 20vw;
     @include cen-col-without-justify;
-    overflow-y: scroll;
 
     ul {
       @include reset;
       @include cen-col-without-justify;
       width: 90%;
+      min-height: 600px;
+      max-height: 600px;
+      overflow-y: scroll;
     }
 
     li {
@@ -59,6 +61,7 @@
         width: 40px;
         margin: 2.8rem 0;
         border-radius: 50%;
+        cursor: pointer;
       }
 
       button:hover {

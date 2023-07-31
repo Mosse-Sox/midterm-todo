@@ -32,6 +32,16 @@ $(document).ready(function () {
     }).catch((error) => {
       console.error('Error', error.status, error.responseText);
     });
+
+  });
+
+  $('.todo-list-container').on('click', '.deleteb', function(event) {
+    event.preventDefault();
+
+    const $listItem = $(this).closest('li');
+    const todoId = $listItem.attr('id');
+
+    deleteTodo(todoId);
   });
 
   loadTodos();

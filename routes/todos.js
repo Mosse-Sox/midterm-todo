@@ -35,6 +35,7 @@ todosRouter.post("/", (req, res) => {
     });
 });
 
+
 todosRouter.put("/:id", (req, res) => {
   const todoId = req.params.id;
   const updateTodo = {
@@ -48,6 +49,20 @@ todosRouter.put("/:id", (req, res) => {
     })
     .catch((err) => {
       console.error(err.message);
+    });
+  });
+
+todosRouter.post("/:id", (req, res) => {
+  const todo_id = req.params.id;
+  todosQueries
+    .deleteTodo(todo_id)
+    .then((result) => {
+      res.status(201).send();
+    })
+    .catch((err) => {
+      console.error(err.message);
+      res.status(500).json({ error: "Internal Server Error" });
+
     });
 });
 
