@@ -3,7 +3,7 @@ const createTodoElement = (todo) => {
   const safeText = DOMPurify.sanitize(todo.name);
   const $todo = `
     <li>
-    <input type="checkbox" class="todo-checkbox">
+    <input type="checkbox" class="todo-checkbox" id="todo-checkbox-id">
     <p class="todo-text-html">${safeText}</p>
     <button class="delete-button">X</button>
     </li>`;

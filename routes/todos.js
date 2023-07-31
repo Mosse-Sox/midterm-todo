@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const express = require("express");
 const todosRouter = express.Router();
 const todosQueries = require("../db/queries/todos-queries");
@@ -28,6 +29,22 @@ todosRouter.post("/", (req, res) => {
       todosQueries.addTodo(todo).then((result) => {
         res.status(201).send();
       });
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
+});
+
+todosRouter.put("/:id", (req, res) => {
+  const todoId = req.params.id;
+  const updateTodo = {
+    completed_at: new Date()
+  };
+
+  todosQueries
+    .updateTodo(todoId, updateTodo)
+    .then((todo) => {
+      res.status(200).send();
     })
     .catch((err) => {
       console.error(err.message);

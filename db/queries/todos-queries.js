@@ -1,3 +1,4 @@
+const { response } = require("express");
 const db = require("../connection");
 
 const getTodos = () => {
@@ -17,7 +18,18 @@ const addTodo = (todo) => {
     });
 };
 
+const updateTodo = (todo) => {
+  return db
+    .query("UPDATE to_dos SET completed_at = CURRENT_TIMESTAMP WHERE id = $1", [
+      todo.completed_at
+    ])
+    .then((response) => {
+      return response;
+    });
+};
+
 module.exports = {
   getTodos,
   addTodo,
+  updateTodo
 };
