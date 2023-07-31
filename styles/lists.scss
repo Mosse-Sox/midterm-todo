@@ -4,6 +4,9 @@
 .titles {
   color: $accent-color;
   font-family: $funky-text;
+  @include flex-row;
+  justify-content: space-around;
+  padding: 0 50px;
 }
 
 .todo-list-container {
