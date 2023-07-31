@@ -2,7 +2,7 @@
 @import "mixins";
 
 .titles {
-  color: rgb(88, 83, 83);
+  color:$font-black;
   font-family: $funky-text;
   @include flex-row;
   justify-content: space-between;
