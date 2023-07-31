@@ -27,12 +27,23 @@ const deleteTodo = (todo_id) => {
     });
 };
 
-const updateTodo = (todo_id) => {
-  return db
+const updateTodo = (completed_status, todo_id) => {
+  console.log(completed_status);
+
+  if (completed_status === true) {
+    return db
     .query("UPDATE to_dos SET completed_at = CURRENT_TIMESTAMP WHERE id = $1", [todo_id])
     .then((response) => {
       return response;
     });
+  }
+
+  return db
+    .query("UPDATE to_dos SET completed_at = NULL WHERE id = $1", [todo_id])
+    .then((response) => {
+      return response;
+    });
+
 };
 
 module.exports = {
