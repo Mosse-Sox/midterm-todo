@@ -35,7 +35,6 @@ todosRouter.post("/", (req, res) => {
     });
 });
 
-
 todosRouter.post("/:id", (req, res) => {
   const todoId = req.params.id;
   const updateTodo = {
