@@ -26,9 +26,7 @@ $(document).ready(function () {
     const $listItem = $(this).closest('li');
     const todoId = $listItem.attr('id');
 
-    // if (!checkboxValue) {
-    //   checkboxValue = false;
-    // }
+    console.log(todoId, checkboxValue);
     $.ajax({
       method: 'POST',
       url: `/todos/${todoId}`,
