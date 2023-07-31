@@ -39,8 +39,6 @@ todosRouter.post("/:id", (req, res) => {
   const todoId = req.params.id;
   const checkStatus = req.body.checked;
 
-  console.log(checkStatus);
-
   todosQueries
     .updateTodo(checkStatus, todoId)
     .then((todo) => {
