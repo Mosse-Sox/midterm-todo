@@ -2,14 +2,14 @@
 @import "mixins";
 
 .titles {
-  color: $accent-color;
+  color: rgb(88, 83, 83);
   font-family: $funky-text;
   @include flex-row;
   justify-content: space-between;
   padding: 0 9vw;
 
   h3 {
-    font-size: 3vh;
+    font-size: 3.5vh;
     padding: 0 3vw;
   }
 }
@@ -27,7 +27,7 @@
     ul {
       @include reset;
       @include cen-col-without-justify;
-      width: 90%
+      width: 90%;
     }
 
     li {
@@ -39,6 +39,7 @@
       margin: 1em 0;
       padding: 0 1rem;
 
+
       input {
         @include reset;
       }
@@ -49,34 +50,89 @@
         display: flex;
         text-align: center;
         @include cenetered-column;
+        font-size: 2.5vh;
       }
 
       button {
         @include reset;
-        height: 45%;
-        width: 20%;
-        margin: 1.5rem 0;
+        height: 40px;
+        width: 40px;
+        margin: 1.8rem 0;
         border-radius: 50%;
       }
 
       .todo-checkbox {
+        appearance: none;
+        height: 40px;
+        width: 40px;
+        margin: 1.8rem 0;
+        border: 0.15em solid white;
         border-radius: 50%;
+        font: inherit;
+        color: white;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
       }
+
+      .todo-checkbox::before {
+        content: "";
+        height: 25px;
+        width: 25px;
+        transform: scale(0);
+        transition: 120ms trasnform ease-in-out;
+        transform-origin: bottom left;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      }
+
+      .todo-checkbox:checked::before {
+        transform: scale(1);
+        background-color: #000000;
+      }
+    }
+
+    li:hover {
+      box-shadow: 0.3rem 0.3rem $foreground-color;
     }
   }
 }
 
 #todo-food {
-  background-color: #4d295a;
-  border: 2px solid #270631;
+  background-color: #a578b6;
+  border: 2px solid #421c4e;
   box-shadow: 1rem 1rem $foreground-color;
 
   li {
-    border: 2px solid #250631;
+    border: 2px solid #361b41;
   }
 
   button {
-    background-color: #604674;
-    border: solid #240631;
+    background-color: #9a7ab2;
+    border: solid #643d75;
+  }
+
+  .todo-checkbox:checked::before {
+    transform: scale(1);
+    background-color: #3e2e60;
+  }
+}
+
+#todo-products {
+  background-color: #a578b6;
+  border: 2px solid #421c4e;
+  box-shadow: 1rem 1rem $foreground-color;
+
+  li {
+    border: 2px solid #361b41;
+  }
+
+  button {
+    background-color: #9a7ab2;
+    border: solid #643d75;
+  }
+
+  .todo-checkbox:checked::before {
+    transform: scale(1);
+    background-color: #3e2e60;
   }
 }
