@@ -61,6 +61,10 @@
         border-radius: 50%;
       }
 
+      button:hover {
+        box-shadow: 0.2rem 0.2rem $foreground-color;
+      }
+
       .todo-checkbox {
         appearance: none;
         height: 40px;
@@ -107,7 +111,7 @@
   }
 
   button {
-    background-color: #9a7ab2;
+    background-color: #d7c4e5;
     border: solid #643d75;
   }
 
@@ -118,21 +122,61 @@
 }
 
 #todo-products {
-  background-color: #a578b6;
-  border: 2px solid #421c4e;
+  background-color: #e3ce8c;
+  border: 2px solid #a3814d;
   box-shadow: 1rem 1rem $foreground-color;
 
   li {
-    border: 2px solid #361b41;
+    border: 2px solid #a3814d;
   }
 
   button {
-    background-color: #9a7ab2;
-    border: solid #643d75;
+    background-color: #eadabf;
+    border: solid #a3814d;
   }
 
   .todo-checkbox:checked::before {
     transform: scale(1);
-    background-color: #3e2e60;
+    background-color: #a0772b;
+  }
+}
+
+#todo-books {
+  background-color: #dea295;
+  border: 2px solid #96675c;
+  box-shadow: 1rem 1rem $foreground-color;
+
+  li {
+    border: 2px solid #96675c;
+  }
+
+  button {
+    background-color: #eac5bf;
+    border: solid #96675c
+  }
+
+  .todo-checkbox:checked::before {
+    transform: scale(1);
+    background-color: #96675c
+  }
+}
+
+#todo-films {
+  background-color: #95bade;
+  border: 2px solid #587b9f;
+  box-shadow: 1rem 1rem $foreground-color;
+
+  li {
+    border: 2px solid #587b9f;
+  }
+
+  button {
+    background-color: #bfdaea;
+    border: solid #587b9f
+  }
+
+  .todo-checkbox:checked::before {
+    transform: scale(1);
+    background-color: #476480
   }
 }

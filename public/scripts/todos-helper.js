@@ -5,7 +5,7 @@ const createTodoElement = (todo) => {
     <li>
     <input type="checkbox" class="todo-checkbox">
     <p class="todo-text-html">${safeText}</p>
-    <button class="delete-button">x</button>
+    <button class="delete-button">X</button>
     </li>`;
 
   return $todo;
