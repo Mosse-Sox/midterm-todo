@@ -11,6 +11,7 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
 }
 
+// todos title style
 @keyframes fadeIn {
   from {
       opacity: 0;
@@ -28,12 +29,14 @@ h1 {
   text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
+// list of todos styles
 li {
   font-family: $todo-font;
   color: rgb(255, 255, 255);
   font-size:  $font-light;
 }
 
+// input styles
 input {
   padding: 10px;
   font-size: 16px;
@@ -42,6 +45,7 @@ input {
   outline: none;
 }
 
+// button styles
 .button-class {
   padding: 10px 20px;
   font-size: 16px;
@@ -52,4 +56,22 @@ input {
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s ease;
+}
+
+// icon styles
+@keyframes fadeInOut {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.todo-icon {
+  width: 200px;
+  height: 200px;
+  margin-top: -60px;
+  opacity: 0.7;
+}
+
+img:hover, h1:hover {
+  animation: fadeInOut 2s infinite;
 }
