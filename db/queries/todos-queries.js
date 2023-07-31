@@ -27,11 +27,9 @@ const deleteTodo = (todo_id) => {
     });
 };
 
-const updateTodo = (todo) => {
+const updateTodo = (todo_id) => {
   return db
-    .query("UPDATE to_dos SET completed_at = CURRENT_TIMESTAMP WHERE id = $1", [
-      todo.completed_at
-    ])
+    .query("UPDATE to_dos SET completed_at = CURRENT_TIMESTAMP WHERE id = $1", [todo_id])
     .then((response) => {
       return response;
     });

@@ -54,7 +54,7 @@ const loadTodos = function () {
 const deleteTodo = function (todo_id) {
   $.ajax({
     method: "POST",
-    url: `/todos/${todo_id}`
+    url: `/todos/${todo_id}/delete`
   })
     .then((result) => {
       console.log(result);
