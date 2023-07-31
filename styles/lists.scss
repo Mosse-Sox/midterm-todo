@@ -23,11 +23,13 @@
     width: 20vw;
     @include cen-col-without-justify;
     overflow-y: scroll;
+    min-height: 200px;
 
     ul {
       @include reset;
       @include cen-col-without-justify;
       width: 90%;
+      min-height: 184px;
     }
 
     li {

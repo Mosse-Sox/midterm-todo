@@ -17,7 +17,17 @@ const addTodo = (todo) => {
     });
 };
 
+const deleteTodo = (todo_id) => {
+  return db
+    .query("DELETE FROM to_dos WHERE to_dos.id = $1", [todo_id])
+    .then((response) => {
+      console.log(response);
+      return response;
+    });
+};
+
 module.exports = {
   getTodos,
   addTodo,
+  deleteTodo,
 };

@@ -34,4 +34,17 @@ todosRouter.post("/", (req, res) => {
     });
 });
 
+todosRouter.post("/:id", (req, res) => {
+  const todo_id = req.params.id;
+  todosQueries
+    .deleteTodo(todo_id)
+    .then((result) => {
+      res.status(201).send();
+    })
+    .catch((err) => {
+      console.error(err.message);
+      res.status(500).json({ error: "Internal Server Error" });
+    });
+});
+
 module.exports = todosRouter;

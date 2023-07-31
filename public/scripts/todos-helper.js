@@ -12,11 +12,10 @@ const createTodoElement = (todo) => {
 };
 
 const renderTodos = (todos) => {
-
-  const products = $('#todo-products');
-  const films = $('#todo-films');
-  const books = $('#todo-books');
-  const food = $('#todo-food');
+  const products = $("#todo-products");
+  const films = $("#todo-films");
+  const books = $("#todo-books");
+  const food = $("#todo-food");
 
   products.empty();
   films.empty();
@@ -40,13 +39,16 @@ const renderTodos = (todos) => {
 
 const loadTodos = function () {
   $.ajax({
-    method: 'GET',
-    url: '/todos',
-    datatype: 'json'
-  }).then((response) => {
-    renderTodos(response);
-  }).catch((error) => {
-    console.error('Error:', error.status, error.responseText);
-  });
+    method: "GET",
+    url: "/todos",
+    datatype: "json",
+  })
+    .then((response) => {
+      renderTodos(response);
+    })
+    .catch((error) => {
+      console.error("Error:", error.status, error.responseText);
+    });
 };
 
+const deleteTodo = function () {};
