@@ -110,3 +110,7 @@ input {
 img:hover, h1:hover, .button-class:hover {
   animation: fadeInOut 2s infinite;
 }
+
+.todo-checkbox:checked + .todo-text-html {
+    text-decoration: line-through;
+}
