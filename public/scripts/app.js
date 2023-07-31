@@ -22,10 +22,13 @@ $(document).ready(function () {
   // add an event listener for the checkbox when check
   $('.todo-list-container').on("change", ".todo-checkbox", function (event) {
     event.preventDefault();
-    const checkboxValue = $(this).prop("checked");
+    let checkboxValue = $(this).prop("checked");
     const $listItem = $(this).closest('li');
     const todoId = $listItem.attr('id');
 
+    // if (!checkboxValue) {
+    //   checkboxValue = false;
+    // }
     $.ajax({
       method: 'POST',
       url: `/todos/${todoId}`,
