@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable indent */
 const { response } = require("express");
 const db = require("../connection");
 
@@ -28,9 +30,9 @@ const deleteTodo = (todo_id) => {
 };
 
 const updateTodo = (completed_status, todo_id) => {
-  console.log(completed_status);
 
-  if (completed_status === true) {
+  if (completed_status === 'true') {
+    console.log('Updating db', completed_status);
     return db
     .query("UPDATE to_dos SET completed_at = CURRENT_TIMESTAMP WHERE id = $1", [todo_id])
     .then((response) => {
