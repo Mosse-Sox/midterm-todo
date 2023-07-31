@@ -1,9 +1,53 @@
 @import "constants";
 @import "mixins";
 
+.titles {
+  color: $accent-color;
+  font-family: $funky-text;
+}
 
 .todo-list-container {
   @include flex-row;
-  margin-top: 4em;
   border: 3px solid red;
+  justify-content: space-evenly;
+  height: 700px;
+
+  div {
+    border: solid red;
+    width: 250px;
+    @include cen-col-without-justify;
+    overflow-y: scroll;
+
+    ul {
+      @include reset;
+      @include cen-col-without-justify;
+      width: 90%
+    }
+
+    li {
+      @include reset;
+      width: 90%;
+      height: 100px;
+      border: solid red;
+      @include flex-row;
+      justify-content: space-around;
+      justify-items: center;
+
+      input {
+        @include reset;
+      }
+
+      span {
+        @include reset;
+      }
+
+      button {
+        @include reset;
+      }
+    }
+  }
+}
+
+#todo-food {
+  @include flex-column;
 }

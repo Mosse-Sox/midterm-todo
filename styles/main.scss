@@ -6,7 +6,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  
+
   background-color: #e8d9b1;
   background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
 }
@@ -28,7 +28,7 @@ h1 {
   text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
-ol {
+li {
   font-family: $todo-font;
   color: rgb(255, 255, 255);
   font-size:  $font-light;

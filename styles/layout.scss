@@ -10,10 +10,18 @@ html {
 body {
   @include reset;
   @include flex-column;
+  width: 100%;
 }
 
 main {
   @include flex-column;
+  margin-top: 4em;
   justify-content: space-between;
+  width: 100%;
+
+  div {
+    @include reset;
+    @include flex-row;
+  }
 }
 

@@ -2,11 +2,11 @@
 const createTodoElement = (todo) => {
   const safeText = DOMPurify.sanitize(todo.name);
   const $todo = `
-    <ol>
+    <li>
     <input type="checkbox" class="todo-checkbox">
-    ${safeText}
+    <span class="todo-text-html">${safeText}</span>
     <button class="delete-button">x</button>
-    </ol>`;
+    </li>`;
 
   return $todo;
 };
