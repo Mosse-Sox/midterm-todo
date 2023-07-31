@@ -19,12 +19,16 @@ $(document).ready(function () {
     $form.val('');
   });
 
-  $('.todo-checkbox').click(function () {
+  // add an event listener for the checkbox when check
+  $('.todo-list-container').on("change", ".todo-checkbox", function (event) {
+    event.preventDefault();
     const checkboxValue = $(this).prop("checked");
-    const todoId = $(this).data("todo-checkbox-id");
+    const $listItem = $(this).closest('li');
+    const todoId = $listItem.attr('id');
 
+    console.log(todoId);
     $.ajax({
-      method: 'PATCH',
+      method: 'POST',
       url: `/todos/${todoId}`,
       data: { checked: checkboxValue },
     }).then(function (response) {
@@ -35,6 +39,7 @@ $(document).ready(function () {
 
   });
 
+  // add an event listener for the delete button
   $('.todo-list-container').on('click', '.deleteb', function(event) {
     event.preventDefault();
 

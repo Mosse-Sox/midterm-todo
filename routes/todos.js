@@ -36,7 +36,7 @@ todosRouter.post("/", (req, res) => {
 });
 
 
-todosRouter.put("/:id", (req, res) => {
+todosRouter.post("/:id", (req, res) => {
   const todoId = req.params.id;
   const updateTodo = {
     completed_at: new Date()
@@ -50,9 +50,9 @@ todosRouter.put("/:id", (req, res) => {
     .catch((err) => {
       console.error(err.message);
     });
-  });
+});
 
-todosRouter.post("/:id", (req, res) => {
+todosRouter.post("/:id/delete", (req, res) => {
   const todo_id = req.params.id;
   todosQueries
     .deleteTodo(todo_id)
