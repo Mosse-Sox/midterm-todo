@@ -19,7 +19,7 @@
   <!--  Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Rubik&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Quicksand:wght@300&family=Rubik&display=swap" rel="stylesheet">
 
   <!-- App JS -->
   <script src="/vendor/jquery-3.0.0.js"></script>
@@ -30,20 +30,23 @@
 </head>
 
 <body>
-  <h1>todos</h1>
-  <img class="todo-icon" src="https://img.icons8.com/plasticine/100/overview-pages-3.png" alt="overview-pages-3"/>
-      <form id="create-todo-id" method="post" action="/todos">
-        <input type="text" name="name" id="todo-input" required />
-        <button type="submit" class="button-class">Add Todo</button>
-      </form>
+  <div class="todo-upper-container">
+    <h1>todos</h1>
+    <img class="todo-icon" src="https://img.icons8.com/plasticine/100/overview-pages-3.png" alt="overview-pages-3" />
+    <h2>Add your todo</h2>
+    <h4>What do you want to get done today?</h4>
+    <form id="create-todo-id" method="post" action="/todos">
+      <input type="text" name="name" id="todo-input" required />
+      <button type="submit" class="button-class">Add Todo</button>
+    </form>
+  </div>
+  <main>
+    <div class="titles">
+      <h3>Food</h3>
+      <h3>Products</h3>
+      <h3>Books</h3>
+      <h3>Films</h3>
     </div>
-    <main>
-      <div class="titles">
-        <h3>Food</h3>
-        <h3>Products</h3>
-        <h3>Books</h3>
-        <h3>Films</h3>
-      </div>
     <div class="todo-list-container">
       <div>
         <ul id="todo-food">

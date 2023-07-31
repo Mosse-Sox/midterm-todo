@@ -29,9 +29,20 @@ h1 {
   text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
+h2 {
+  font-family: $funky-text;
+  color: rgb(88, 83, 83);
+}
+
+h4 {
+  font-family: $normal-todo-font;
+  color: rgb(255, 255, 255);
+
+}
+
 // list of todos styles
 li {
-  font-family: $todo-font;
+  font-family: $normal-todo-font;
   color: rgb(255, 255, 255);
   font-size:  $font-light;
 }
