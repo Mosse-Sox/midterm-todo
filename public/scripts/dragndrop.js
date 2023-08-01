@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  // adds event listener for when a li is starts being dragged
   $(".todo-list-container ul").on("dragstart", "li", function (event) {
     const dragItem = this;
     event.originalEvent.dataTransfer.effectAllowed = "move";
@@ -8,10 +10,12 @@ $(document).ready(function () {
     }, 0);
   });
 
+  // ensures that no default events trigger during dragging
   $(".todo-list-container ul").on("dragover", function (event) {
     event.preventDefault();
   });
 
+  // adds event listeners on uls in .todo-list-container listening for the drop event
   $(".todo-list-container ul").on("drop", function (event) {
     event.preventDefault();
     const dropList = $(this); // The column itself is the drop target
@@ -28,12 +32,19 @@ $(document).ready(function () {
     dragItem.removeClass("dragging");
   });
 
+  // once the li is no longer being dragged classes put on it on dragstart are removed
   $(".todo-list-container ul").on("dragend", "li", function (event) {
     $(this).removeClass("dragging");
     $(this).removeClass("no-scrollbar");
   });
 });
 
+
+/**
+ * this function updates the new category of the todo based on the id passed to it
+ * @param {String} todoId a string representing the id of the todo
+ * @param {String} newCategoryString a string representing the new category
+ */
 const newCategory = function (todoId, newCategoryString) {
   let newCategory = 1;
   if (newCategoryString === "food") {
@@ -48,6 +59,12 @@ const newCategory = function (todoId, newCategoryString) {
   updateTodoCategory(todoId, newCategory);
 };
 
+/**
+ * This function uses the event to find the ul that the list should be dropped into and decides where it should be dropped
+ * @param {*} event the 'drop' event
+ * @param {*} dropList the ul the li was dropped on
+ * @param {*} dragItem the li being dragged
+ */
 const dropDecider = function (event, dropList, dragItem) {
   if (dropList.children("li").length === 0) {
     // If the column is empty, simply append the dragged item to it

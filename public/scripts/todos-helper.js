@@ -19,7 +19,7 @@ const deleteTodo = function (todo_id) {
 };
 
 /**
- * This function makes a post request to update a todos category
+ * This function makes a post request to update a todos category_id column
  * @param {String} todo_id a string representing a todos id
  * @param {Integer} newCategory an int (1, 2, 3, 4) representing the new category
  */
@@ -38,14 +38,14 @@ const updateTodoCategory = function (todo_id, newCategory) {
 };
 
 /**
- * this function takes in the name of a
+ * this function takes in the name of a todo and makes a post request to add it to the db
  * @param {*} todoName this is the name of the todo the user passed in
  */
 const addTodo = function (todoName) {
   $.ajax({
     method: "POST",
     url: "/todos",
-    data: data,
+    data: todoName,
   })
     .then(function (response) {
       loadTodos();
@@ -55,6 +55,11 @@ const addTodo = function (todoName) {
     });
 };
 
+/**
+ * This function makes a post request to update a todos completed_at column
+ * @param {String} todoId this is the string representing the todos id
+ * @param {String} checkboxValue this is a string representing if a checkbox is checked or not ('true', 'false')
+ */
 const updateCompletedAt = function (todoId, checkboxValue) {
   $.ajax({
     method: 'POST',
