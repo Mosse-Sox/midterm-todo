@@ -2,7 +2,7 @@
 const createTodoElement = (todo) => {
   const safeText = DOMPurify.sanitize(todo.name);
   const $todo = `
-    <li id=${todo.id}>
+    <li draggable="true" id=${todo.id}>
     <input type="checkbox" class="todo-checkbox" ${todo.completed_at ? 'checked' : ''}>
     <p class="todo-text-html">${safeText}</p>
     <button class="deleteb" type="button">X</button>
