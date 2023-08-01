@@ -1,32 +1,52 @@
 @import "constants";
 @import "mixins";
 
-.titles {
-  color:$font-black;
-  font-family: $funky-text;
+#completed-container {
   @include flex-row;
-  justify-content: space-between;
-  padding: 0 9vw;
+  justify-content: space-around;
+  align-items: center;
+  height: 700px;
 
-  h3 {
-    font-size: 3.5vh;
-    padding: 0 3vw;
+  #progress-tracker {
+    @include cenetered-column;
+    width: 50%;
+    height: 60%;
+    margin-top: 10em;
+    padding-top: 3em;
+    border: 2px solid #447480;
+    background-color: #6ab0c4;
+    box-shadow: 1rem 1rem $foreground-color;
+
+    h2 {
+      @include reset;
+      font-size: 8vh;
+      font-family: $funky-text;
+      color: #ece991;
+      margin-bottom: 30px;
+    }
+
+    .progress-text {
+      @include reset;
+      font-size: 5vh;
+      font-family: $funky-text;
+      color: #244149;
+    }
   }
-}
 
-.todo-list-container {
-  @include flex-row;
-  justify-content: space-evenly;
-  height: 650px;
-
-  div {
-    width: 25vw;
+  #list {
     @include cen-col-without-justify;
+
+    h3 {
+      font-size: 3.5vh;
+      padding: 0 3vw;
+      font-family: $funky-text;
+      color: $font-black;
+    }
 
     ul {
       @include reset;
       @include cen-col-without-justify;
-      width: 90%;
+      width: 550.4px;
       min-height: 600px;
       max-height: 600px;
       overflow-y: scroll;
@@ -40,7 +60,6 @@
       align-content: center;
       margin: 1em 0;
       padding: 0 1rem;
-
 
       input {
         @include reset;
@@ -94,7 +113,7 @@
 
       .todo-checkbox:checked::before {
         transform: scale(1);
-        background-color: #000000;
+        background-color: #49131e;
       }
     }
 
@@ -104,82 +123,17 @@
   }
 }
 
-#todo-food {
-  background-color: #a578b6;
-  border: 2px solid #421c4e;
+#completed-todos {
+  background-color: #e05175;
+  border: 2px solid #411520;
   box-shadow: 1rem 1rem $foreground-color;
 
   li {
-    border: 2px solid #361b41;
+    border: 2px solid #411520;
   }
 
   button {
-    background-color: #d7c4e5;
-    border: solid #643d75;
-  }
-
-  .todo-checkbox:checked::before {
-    transform: scale(1);
-    background-color: #3e2e60;
-  }
-}
-
-#todo-products {
-  background-color: #e3ce8c;
-  border: 2px solid #a3814d;
-  box-shadow: 1rem 1rem $foreground-color;
-
-  li {
-    border: 2px solid #a3814d;
-  }
-
-  button {
-    background-color: #eadabf;
-    border: solid #a3814d;
-  }
-
-  .todo-checkbox:checked::before {
-    transform: scale(1);
-    background-color: #a0772b;
-  }
-}
-
-#todo-books {
-  background-color: #dea295;
-  border: 2px solid #96675c;
-  box-shadow: 1rem 1rem $foreground-color;
-
-  li {
-    border: 2px solid #96675c;
-  }
-
-  button {
-    background-color: #eac5bf;
-    border: solid #96675c
-  }
-
-  .todo-checkbox:checked::before {
-    transform: scale(1);
-    background-color: #96675c
-  }
-}
-
-#todo-films {
-  background-color: #95bade;
-  border: 2px solid #587b9f;
-  box-shadow: 1rem 1rem $foreground-color;
-
-  li {
-    border: 2px solid #587b9f;
-  }
-
-  button {
-    background-color: #bfdaea;
-    border: solid #587b9f
-  }
-
-  .todo-checkbox:checked::before {
-    transform: scale(1);
-    background-color: #476480
+    background-color: #fa879e;
+    border: solid #411520;
   }
 }

@@ -38,8 +38,35 @@ $(document).ready(function() {
 
   });
 
+  $('#list').on("change", ".todo-checkbox", function(event) {
+    event.preventDefault();
+    let checkboxValue = $(this).prop("checked");
+    const $listItem = $(this).closest('li');
+    const todoId = $listItem.attr('id');
+
+    $.ajax({
+      method: 'POST',
+      url: `/todos/${todoId}`,
+      data: { checked: checkboxValue },
+    }).then(function(response) {
+      loadTodos();
+    }).catch((error) => {
+      console.error('Error', error.status, error.responseText);
+    });
+
+  });
+
   // add an event listener for the delete button
   $('.todo-list-container').on('click', '.deleteb', function(event) {
+    event.preventDefault();
+
+    const $listItem = $(this).closest('li');
+    const todoId = $listItem.attr('id');
+
+    deleteTodo(todoId);
+  });
+
+  $('#list').on('click', '.deleteb', function(event) {
     event.preventDefault();
 
     const $listItem = $(this).closest('li');

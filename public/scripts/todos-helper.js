@@ -3,7 +3,9 @@ const createTodoElement = (todo) => {
   const safeText = DOMPurify.sanitize(todo.name);
   const $todo = `
     <li draggable="true" id=${todo.id}>
-    <input type="checkbox" class="todo-checkbox" ${todo.completed_at ? 'checked' : ''}>
+    <input type="checkbox" class="todo-checkbox" ${
+      todo.completed_at ? "checked" : ""
+    }>
     <p class="todo-text-html">${safeText}</p>
     <button class="deleteb" type="button">X</button>
     </li>`;
@@ -16,16 +18,25 @@ const renderTodos = (todos) => {
   const films = $("#todo-films");
   const books = $("#todo-books");
   const food = $("#todo-food");
+  const completed = $("#completed-todos");
+  const progress = $("#progress-tracker");
 
   products.empty();
   films.empty();
   books.empty();
   food.empty();
+  completed.empty();
+  progress.empty();
+
+  let completedTodos = 0;
 
   for (const todo of todos) {
     const $todo = createTodoElement(todo);
 
-    if (todo.category_id === 1) {
+    if (todo.completed_at) {
+      completedTodos++;
+      completed.prepend($todo);
+    } else if (todo.category_id === 1) {
       books.prepend($todo);
     } else if (todo.category_id === 2) {
       films.prepend($todo);
@@ -35,6 +46,11 @@ const renderTodos = (todos) => {
       products.prepend($todo);
     }
   }
+
+  const $progressText = `<p class="progress-text">Good Work!<p>
+  <h2><i class="fa-solid fa-star"></i></h2>
+  <p class="progress-text">You have completed ${completedTodos} todos!<p>`;
+  progress.append($progressText);
 };
 
 const loadTodos = function () {
@@ -54,7 +70,7 @@ const loadTodos = function () {
 const deleteTodo = function (todo_id) {
   $.ajax({
     method: "POST",
-    url: `/todos/${todo_id}/delete`
+    url: `/todos/${todo_id}/delete`,
   })
     .then((result) => {
       console.log(result);
@@ -69,7 +85,7 @@ const updateTodoCategory = function (todo_id, newCategory) {
   $.ajax({
     method: "POST",
     url: `/todos/${todo_id}/update_category`,
-    data: { category: newCategory }
+    data: { category: newCategory },
   })
     .then((result) => {
       loadTodos();
@@ -78,5 +94,3 @@ const updateTodoCategory = function (todo_id, newCategory) {
       console.error("Error:", error.status, error.responseText);
     });
 };
-
-

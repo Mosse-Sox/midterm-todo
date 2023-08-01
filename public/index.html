@@ -1,79 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What To-do</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What To-do</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/lists.css" />
+    <link rel="stylesheet" href="/styles/completed.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/lists.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
+    <!--  Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Quicksand:wght@300&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome fonts -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <!--  Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Quicksand:wght@300&family=Rubik&display=swap" rel="stylesheet">
+    <!-- App JS -->
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/todos-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
+  </head>
 
-  <!-- App JS -->
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/scripts/todos-helper.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
-
-</head>
-
-<body>
-  <div class="todo-upper-container">
-    <h1>todos</h1>
-    <img class="todo-icon" src="https://img.icons8.com/plasticine/100/overview-pages-3.png" alt="overview-pages-3" />
-    <h2>Add your todo</h2>
-    <h4>What do you want to get done today?</h4>
-    <form id="create-todo-id" method="post" action="/todos">
-      <input type="text" name="name" id="todo-input" required />
-      <button type="submit" class="button-class">Add Todo</button>
-    </form>
-  </div>
-  <main>
-    <div class="titles">
-      <h3>Food</h3>
-      <h3>Products</h3>
-      <h3>Books</h3>
-      <h3>Films</h3>
+  <body>
+    <div class="todo-upper-container">
+      <h1>todos</h1>
+      <img
+        class="todo-icon"
+        src="https://img.icons8.com/plasticine/100/overview-pages-3.png"
+        alt="overview-pages-3"
+      />
+      <h2>Add your todo</h2>
+      <h4>What do you want to get done today?</h4>
+      <form id="create-todo-id" method="post" action="/todos">
+        <input type="text" name="name" id="todo-input" required />
+        <button type="submit" class="button-class">Add Todo</button>
+      </form>
     </div>
-    <div class="todo-list-container">
-      <div>
-        <ul id="todo-food">
-          <li>Sushi</li>
-          <li>Chipotle Burger</li>
-        </ul>
+    <main>
+      <div class="titles">
+        <h3>Food</h3>
+        <h3>Products</h3>
+        <h3>Books</h3>
+        <h3>Films</h3>
       </div>
-      <div>
-        <ul id="todo-products">
-          <li>Swifter Pads</li>
-          <li>Imac monitor</li>
-        </ul>
+      <div class="todo-list-container">
+        <div>
+          <ul id="todo-food"></ul>
+        </div>
+        <div>
+          <ul id="todo-products"></ul>
+        </div>
+        <div>
+          <ul id="todo-books"></ul>
+        </div>
+        <div>
+          <ul id="todo-films"></ul>
+        </div>
       </div>
-      <div>
-        <ul id="todo-books">
-          <li>Stardust</li>
-          <li>Life of Timothy Green</li>
-        </ul>
+      <div id="completed-container">
+        <div id="list">
+          <h3>Completed</h3>
+          <ul id="completed-todos"></ul>
+        </div>
+        <div id="progress-tracker">
+          <p>Congratz!</p>
+        </div>
       </div>
-      <div>
-        <ul id="todo-films">
-          <li>Jurasic Park</li>
-          <li>Annabelle</li>
-        </ul>
-      </div>
-    </div>
-  </main>
-</body>
-
+    </main>
+  </body>
 </html>
