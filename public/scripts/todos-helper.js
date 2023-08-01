@@ -65,4 +65,19 @@ const deleteTodo = function (todo_id) {
     });
 };
 
+const updateTodoCategory = function (todo_id, newCategory) {
+  $.ajax({
+    method: "POST",
+    url: `/todos/${todo_id}/update_category`,
+    data: { category: newCategory }
+  })
+    .then((result) => {
+      console.log(result);
+      loadTodos();
+    })
+    .catch((error) => {
+      console.error("Error:", error.status, error.responseText);
+    });
+};
+
 
