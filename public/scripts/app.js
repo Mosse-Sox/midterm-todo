@@ -102,6 +102,7 @@ $(document).ready(function() {
     }
     console.log(newCategory);
     updateTodoCategory(todoId, newCategory);
+
     dragItem.removeClass('dragging');
   });
 
