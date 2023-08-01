@@ -66,7 +66,6 @@ todosRouter.post("/:id/delete", (req, res) => {
 todosRouter.post("/:id/update_category", (req, res) => {
   const todo_id = req.params.id;
   const newCategory = req.body.category;
-  console.log(newCategory);
   todosQueries
     .updateTodoCategory(todo_id, newCategory)
     .then((result) => {

@@ -100,7 +100,6 @@ $(document).ready(function() {
     } else if (newCategoryString === 'products') {
       newCategory = 4;
     }
-    console.log(newCategory);
     updateTodoCategory(todoId, newCategory);
 
     dragItem.removeClass('dragging');
