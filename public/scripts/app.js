@@ -85,12 +85,6 @@ $(document).ready(function() {
       }
     }
   
-    // Perform additional logic if needed, e.g., update the category in the database
-    const todoId = dragItem.attr('id');
-    const newCategory = dropList.attr('id').replace('todo-', ''); // Extract the new category from the drop list ID
-    // Make an AJAX call to update the category in the database
-    // updateTodoCategory(todoId, newCategory);
-  
     dragItem.removeClass('dragging');
   });
   
