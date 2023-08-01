@@ -10,10 +10,6 @@ todosRouter.get("/", (req, res) => {
     .then((todos) => {
       res.json(todos);
     })
-    .catch((err) => {
-      console.error(err.message);
-      res.status(500).json({ error: "Internal Server Error" });
-    });
 });
 
 todosRouter.post("/", (req, res) => {
@@ -30,9 +26,6 @@ todosRouter.post("/", (req, res) => {
         res.status(201).send();
       });
     })
-    .catch((err) => {
-      console.error(err.message);
-    });
 });
 
 todosRouter.post("/:id", (req, res) => {
@@ -44,9 +37,6 @@ todosRouter.post("/:id", (req, res) => {
     .then((todo) => {
       res.status(200).send();
     })
-    .catch((err) => {
-      console.error(err.message);
-    });
 });
 
 todosRouter.post("/:id/delete", (req, res) => {

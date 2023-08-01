@@ -3,10 +3,11 @@ const openAIChatCompletion = require('./openai');
 
 
 const categorize = function (todoName) {
-  const prompt = `In one word, all lowercase, no periods, is ${todoName} a book, film, food or product?`
+  const prompt = `In one word, all lowercase, no periods, is ${todoName} a book, film, food or product? If you arent sure just say book or film only please.`
   let category = null;
   return openAIChatCompletion(prompt)
   .then((response) => {
+    category = 1;
     if (response.content === 'book') {
       category = 1;
     } if (response.content === 'film') {
