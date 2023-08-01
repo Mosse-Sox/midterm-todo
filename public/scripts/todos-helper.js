@@ -72,7 +72,6 @@ const updateTodoCategory = function (todo_id, newCategory) {
     data: { category: newCategory }
   })
     .then((result) => {
-      console.log(result);
       loadTodos();
     })
     .catch((error) => {

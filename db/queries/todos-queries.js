@@ -50,7 +50,7 @@ const updateTodo = (completed_status, todo_id) => {
 
 const updateTodoCategory = function (todoId, newCategory) {
   return db
-  .query("UPDATE to_dos SET category_id = $1 WHERE id = $2", [todoId, newCategory])
+  .query("UPDATE to_dos SET category_id = $1 WHERE id = $2", [newCategory, todoId])
   .then((response) => {
     return response;
   });
