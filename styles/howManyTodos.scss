@@ -1,0 +1,45 @@
+@import "constants";
+@import "mixins";
+
+.todo-count {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  @include cenetered-column;
+  font-family: $normal-todo-font;
+  color: white;
+  background-color: red;
+  font-weight: 600;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 280px;
+  left: 52vw;
+}
+
+.star {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  @include reset;
+  @include cenetered-column;
+  font-family: $normal-todo-font;
+  color: rgb(245, 245, 110);
+  position: absolute;
+  top: 164px;
+  left: 45.78vw;
+
+  i {
+    @include reset;
+    @include cenetered-column;
+    font-size: 3rem;
+    p {
+      @include reset;
+      color: rgb(204, 162, 71);
+      font-size: 1.5rem;
+      position: absolute;
+      bottom: 22%;
+      font-family: $normal-todo-font;
+      font-weight: 600;
+    }
+  }
+}

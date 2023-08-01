@@ -30,6 +30,7 @@ const renderTodos = (todos) => {
   const food = $("#todo-food");
   const completed = $("#completed-todos");
   const progress = $("#progress-tracker");
+  const upperContainer = $("todo-upper-container");
 
   products.empty();
   films.empty();
@@ -39,11 +40,14 @@ const renderTodos = (todos) => {
   progress.empty();
 
   let completedTodos = 0;
+  let todoCount = todos.length;
 
   for (const todo of todos) {
+
     const $todo = createTodoElement(todo);
 
     if (todo.completed_at) {
+      todoCount--;
       completedTodos++;
       completed.prepend($todo);
     } else if (todo.category_id === 1) {
@@ -57,11 +61,8 @@ const renderTodos = (todos) => {
     }
   }
 
-  const $progressText = `<p class="progress-text">Good Work!<p>
-  <h2>✧<i class="fa-solid fa-star"></i>✧</h2>
-  <p class="progress-text">You have completed ${completedTodos} todos!<p>`;
-
-  progress.append($progressText);
+  howManyTodos(todoCount, progress);
+  progressHtmlMaker(completedTodos, progress);
   checkHorizontalOverflow();
 };
 
