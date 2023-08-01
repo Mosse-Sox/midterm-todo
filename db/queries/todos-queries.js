@@ -4,7 +4,7 @@ const { response } = require("express");
 const db = require("../connection");
 
 const getTodos = () => {
-  return db.query("SELECT * FROM to_dos;").then((response) => {
+  return db.query("SELECT * FROM to_dos ORDER BY created_at;").then((response) => {
     return response.rows;
   });
 };

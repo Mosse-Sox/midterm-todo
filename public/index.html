@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- App Styles -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
     <link rel="stylesheet" href="/vendor/border-box.css" />
     <link rel="stylesheet" href="/styles/main.css" />
@@ -38,6 +39,8 @@
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script defer src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/todos-helper.js"></script>
+    <script type="text/javascript" src="/scripts/dragndrop.js"></script>
+    <script type="text/javascript" src="/scripts/loadTodos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
   </head>
 
@@ -65,16 +68,24 @@
       </div>
       <div class="todo-list-container">
         <div>
-          <ul id="todo-food"></ul>
+          <ul id="todo-food">
+            <!-- todos with the food category are appended here -->
+          </ul>
         </div>
         <div>
-          <ul id="todo-products"></ul>
+          <ul id="todo-products">
+            <!-- todos with the products category are appended here -->
+          </ul>
         </div>
         <div>
-          <ul id="todo-books"></ul>
+          <ul id="todo-books">
+            <!-- todos with the books category are appended here -->
+          </ul>
         </div>
         <div>
-          <ul id="todo-films"></ul>
+          <ul id="todo-films">
+            <!-- todos with the film category are appended here -->
+          </ul>
         </div>
       </div>
       <div class="page-break">
@@ -85,10 +96,14 @@
       <div id="completed-container">
         <div id="list">
           <h3>Completed</h3>
-          <ul id="completed-todos"></ul>
+          <ul id="completed-todos">
+            <!-- completed todos are appended here -->
+          </ul>
         </div>
+
+
         <div id="progress-tracker">
-          <p>Congratz!</p>
+           <!-- progress tracker text is appended here -->
         </div>
       </div>
     </main>

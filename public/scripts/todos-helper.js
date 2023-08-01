@@ -1,73 +1,9 @@
 /* eslint-disable no-undef */
-const createTodoElement = (todo) => {
-  const safeText = DOMPurify.sanitize(todo.name);
-  const $todo = `
-    <li draggable="true" id=${todo.id}>
-    <input type="checkbox" class="todo-checkbox" ${
-      todo.completed_at ? "checked" : ""
-    }>
-    <p class="todo-text-html">${safeText}</p>
-    <button class="deleteb" type="button">X</button>
-    </li>`;
 
-  return $todo;
-};
-
-const renderTodos = (todos) => {
-  const products = $("#todo-products");
-  const films = $("#todo-films");
-  const books = $("#todo-books");
-  const food = $("#todo-food");
-  const completed = $("#completed-todos");
-  const progress = $("#progress-tracker");
-
-  products.empty();
-  films.empty();
-  books.empty();
-  food.empty();
-  completed.empty();
-  progress.empty();
-
-  let completedTodos = 0;
-
-  for (const todo of todos) {
-    const $todo = createTodoElement(todo);
-
-    if (todo.completed_at) {
-      completedTodos++;
-      completed.prepend($todo);
-    } else if (todo.category_id === 1) {
-      books.prepend($todo);
-    } else if (todo.category_id === 2) {
-      films.prepend($todo);
-    } else if (todo.category_id === 3) {
-      food.prepend($todo);
-    } else if (todo.category_id === 4) {
-      products.prepend($todo);
-    }
-  }
-
-  const $progressText = `<p class="progress-text">Good Work!<p>
-  <h2>✧<i class="fa-solid fa-star"></i>✧</h2>
-  <p class="progress-text">You have completed ${completedTodos} todos!<p>`;
-
-  progress.append($progressText);
-};
-
-const loadTodos = function () {
-  $.ajax({
-    method: "GET",
-    url: "/todos",
-    datatype: "json",
-  })
-    .then((response) => {
-      renderTodos(response);
-    })
-    .catch((error) => {
-      console.error("Error:", error.status, error.responseText);
-    });
-};
-
+/**
+ * This function makes a post request to delete a todo by taking its id and finding it in the database
+ * @param {String} todo_id this is a string representing the todos id
+ */
 const deleteTodo = function (todo_id) {
   $.ajax({
     method: "POST",
@@ -82,6 +18,11 @@ const deleteTodo = function (todo_id) {
     });
 };
 
+/**
+ * This function makes a post request to update a todos category
+ * @param {String} todo_id a string representing a todos id
+ * @param {Integer} newCategory an int (1, 2, 3, 4) representing the new category
+ */
 const updateTodoCategory = function (todo_id, newCategory) {
   $.ajax({
     method: "POST",
@@ -95,3 +36,33 @@ const updateTodoCategory = function (todo_id, newCategory) {
       console.error("Error:", error.status, error.responseText);
     });
 };
+
+/**
+ * this function takes in the name of a
+ * @param {*} todoName this is the name of the todo the user passed in
+ */
+const addTodo = function (todoName) {
+  $.ajax({
+    method: "POST",
+    url: "/todos",
+    data: data,
+  })
+    .then(function (response) {
+      loadTodos();
+    })
+    .catch((error) => {
+      console.error("Error:", error.status, error.responseText);
+    });
+};
+
+const updateCompletedAt = function (todoId, checkboxValue) {
+  $.ajax({
+    method: 'POST',
+    url: `/todos/${todoId}`,
+    data: { checked: checkboxValue },
+  }).then(function(response) {
+    loadTodos();
+  }).catch((error) => {
+    console.error('Error', error.status, error.responseText);
+  });
+}

@@ -1,142 +1,55 @@
 /* eslint-disable no-undef */
 // Client facing scripts here
-$(document).ready(function() {
-  // add an event listener that listens for the submit event
-  $('#create-todo-id').on('submit', function(event) {
+$(document).ready(function () {
+  // adds a listener that listens for the submit event
+  $("#create-todo-id").on("submit", function (event) {
     event.preventDefault();
+    const todoName = $(this).serialize();
 
-    $.ajax({
-      method: 'POST',
-      url: '/todos',
-      data: $(this).serialize()
-    }).then(function(response) {
-      loadTodos();
-    }).catch((error) => {
-      console.error('Error:', error.status, error.responseText);
-    });
+    addTodo(todoName);
 
-    const $form = $('#todo-input');
-    $form.val('');
+    const $form = $("#todo-input");
+    $form.val("");
   });
 
-  // add an event listener for the checkbox when check
-  $('.todo-list-container').on("change", ".todo-checkbox", function(event) {
+  // adds event listeners for the checkboxs when checked
+  $(".todo-list-container").on("change", ".todo-checkbox", function (event) {
     event.preventDefault();
     let checkboxValue = $(this).prop("checked");
-    const $listItem = $(this).closest('li');
-    const todoId = $listItem.attr('id');
+    const $listItem = $(this).closest("li");
+    const todoId = $listItem.attr("id");
 
-    $.ajax({
-      method: 'POST',
-      url: `/todos/${todoId}`,
-      data: { checked: checkboxValue },
-    }).then(function(response) {
-      loadTodos();
-    }).catch((error) => {
-      console.error('Error', error.status, error.responseText);
-    });
-
+    updateCompletedAt(todoId, checkboxValue);
   });
 
-  $('#list').on("change", ".todo-checkbox", function(event) {
+  $("#list").on("change", ".todo-checkbox", function (event) {
     event.preventDefault();
     let checkboxValue = $(this).prop("checked");
-    const $listItem = $(this).closest('li');
-    const todoId = $listItem.attr('id');
+    const $listItem = $(this).closest("li");
+    const todoId = $listItem.attr("id");
 
-    $.ajax({
-      method: 'POST',
-      url: `/todos/${todoId}`,
-      data: { checked: checkboxValue },
-    }).then(function(response) {
-      loadTodos();
-    }).catch((error) => {
-      console.error('Error', error.status, error.responseText);
-    });
-
+    updateCompletedAt(todoId, checkboxValue);
   });
 
-  // add an event listener for the delete button
-  $('.todo-list-container').on('click', '.deleteb', function(event) {
+  // adds event listeners for the delete buttons
+  $(".todo-list-container").on("click", ".deleteb", function (event) {
     event.preventDefault();
 
-    const $listItem = $(this).closest('li');
-    const todoId = $listItem.attr('id');
+    const $listItem = $(this).closest("li");
+    const todoId = $listItem.attr("id");
 
     deleteTodo(todoId);
   });
 
-  $('#list').on('click', '.deleteb', function(event) {
+  $("#list").on("click", ".deleteb", function (event) {
     event.preventDefault();
 
-    const $listItem = $(this).closest('li');
-    const todoId = $listItem.attr('id');
+    const $listItem = $(this).closest("li");
+    const todoId = $listItem.attr("id");
 
     deleteTodo(todoId);
   });
 
-  $('.todo-list-container ul').on('dragstart', 'li', function(event) {
-    const dragItem = this;
-    event.originalEvent.dataTransfer.effectAllowed = 'move';
-    event.originalEvent.dataTransfer.setData('text/plain', ''); // Required for Firefox to work
-    setTimeout(function() {
-      $(dragItem).addClass('dragging');
-    }, 0);
-  });
-
-  $('.todo-list-container ul').on('dragover', function(event) {
-    event.preventDefault();
-  });
-
-  $('.todo-list-container ul').on('drop', function(event) {
-    event.preventDefault();
-    const dropList = $(this); // The column itself is the drop target
-    const dragItem = $('.dragging');
-
-    if (dropList.children('li').length === 0) {
-      // If the column is empty, simply append the dragged item to it
-      dropList.append(dragItem);
-    } else {
-      // Otherwise, handle the drop as before (move the item within the same column or to a different column)
-      const dropItemElement = event.originalEvent.target.closest('li');
-      const dragItemElement = dragItem[0];
-
-      if (dropItemElement && dragItemElement) {
-        const dropIndex = [...dropList.children()].indexOf(dropItemElement);
-        const dragIndex = [...dragItem.parent().children()].indexOf(dragItemElement);
-        if (dragIndex < dropIndex) {
-          dropItemElement.parentNode.insertBefore(dragItemElement, dropItemElement.nextSibling);
-        } else {
-          dropItemElement.parentNode.insertBefore(dragItemElement, dropItemElement);
-        }
-      }
-    }
-
-    // Perform additional logic if needed, e.g., update the category in the database
-    const todoId = dragItem.attr('id');
-    const newCategoryString = dropList.attr('id').replace('todo-', ''); // Extract the new category from the drop list ID
-    // Make an AJAX call to update the category in the database
-    // updateTodoCategory(todoId, newCategory);
-    let newCategory = 1;
-    if (newCategoryString === 'food') {
-       newCategory = 3;
-    } else if (newCategoryString === 'books') {
-      newCategory = 1;
-    } else if (newCategoryString === 'films') {
-      newCategory = 2;
-    } else if (newCategoryString === 'products') {
-      newCategory = 4;
-    }
-    updateTodoCategory(todoId, newCategory);
-
-    dragItem.removeClass('dragging');
-  });
-
-  $('.todo-list-container ul').on('dragend', 'li', function(event) {
-    $(this).removeClass('dragging');
-    $(this).removeClass('no-scrollbar');
-  });
-
-
+  // first load
   loadTodos();
 });

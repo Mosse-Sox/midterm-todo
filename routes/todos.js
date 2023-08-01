@@ -4,6 +4,7 @@ const todosRouter = express.Router();
 const todosQueries = require("../db/queries/todos-queries");
 const categorize = require("./categories");
 
+// GET /todos/
 todosRouter.get("/", (req, res) => {
   todosQueries
     .getTodos()
@@ -12,6 +13,7 @@ todosRouter.get("/", (req, res) => {
     })
 });
 
+// POST /todos/
 todosRouter.post("/", (req, res) => {
   const todoName = req.body.name;
   // call catagorize function to get category
@@ -28,6 +30,7 @@ todosRouter.post("/", (req, res) => {
     })
 });
 
+// POST /todos/:id -- updates a todos completed_at
 todosRouter.post("/:id", (req, res) => {
   const todoId = req.params.id;
   const checkStatus = req.body.checked;
@@ -39,6 +42,7 @@ todosRouter.post("/:id", (req, res) => {
     })
 });
 
+// POST /todos/:id/delete -- deletes a todo
 todosRouter.post("/:id/delete", (req, res) => {
   const todo_id = req.params.id;
   todosQueries
@@ -53,6 +57,7 @@ todosRouter.post("/:id/delete", (req, res) => {
     });
 });
 
+// POST /todos/:id/update_category -- updates a todos category
 todosRouter.post("/:id/update_category", (req, res) => {
   const todo_id = req.params.id;
   const newCategory = req.body.category;
