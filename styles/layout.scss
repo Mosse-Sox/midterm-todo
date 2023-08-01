@@ -24,8 +24,3 @@ main {
     @include flex-row;
   }
 }
-
-.todo-upper-container {
-  @include flex-column;
-  align-items: center;
-}
