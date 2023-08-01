@@ -9,7 +9,7 @@
 
   #progress-tracker {
     @include cenetered-column;
-    width: 45%;
+    width: 50%;
     height: 55%;
     margin-top: 8vh;
     padding-top: 3vh;
@@ -31,7 +31,7 @@
 
     .progress-text {
       @include reset;
-      font-size: 5vh;
+      font-size: 4vh;
       font-family: $funky-text;
       color: $font-black;
     }
