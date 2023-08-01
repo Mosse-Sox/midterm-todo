@@ -8,7 +8,7 @@
 const createTodoElement = (todo) => {
   const safeText = DOMPurify.sanitize(todo.name);
   const $todo = `
-    <li draggable="true" id=${todo.id}>
+    <li draggable="true" id=${todo.id} class="overflow-container">
     <input type="checkbox" class="todo-checkbox" ${
       todo.completed_at ? "checked" : ""
     }>
@@ -62,8 +62,8 @@ const renderTodos = (todos) => {
   <p class="progress-text">You have completed ${completedTodos} todos!<p>`;
 
   progress.append($progressText);
+  checkHorizontalOverflow();
 };
-
 
 /**
  * this function is called to load todos onto the page
