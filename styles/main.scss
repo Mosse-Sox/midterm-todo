@@ -100,11 +100,6 @@ input {
   100% { opacity: 1; }
 }
 
-.todo-upper-container {
-  @include flex-column;
-  align-items: center;
-}
-
 .todo-icon {
   width: 200px;
   height: 200px;
