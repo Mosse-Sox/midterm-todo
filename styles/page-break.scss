@@ -1,0 +1,14 @@
+@import 'constants';
+@import 'mixins';
+
+.page-break {
+  height: 250px;
+  @include flex-row;
+  justify-content: space-evenly;
+  align-items: center;
+  color: $font-black;
+
+  span {
+    font-size: 2rem;
+  }
+}

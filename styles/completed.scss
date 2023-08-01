@@ -9,13 +9,13 @@
 
   #progress-tracker {
     @include cenetered-column;
-    width: 50%;
-    height: 60%;
-    // margin-top: 15em;
-    padding-top: 3em;
-    border: 2px solid #447480;
-    background-color: #6ab0c4;
-    box-shadow: 1rem 1rem $foreground-color;
+    width: 45%;
+    height: 55%;
+    margin-top: 8vh;
+    padding-top: 3vh;
+    // border: 2px solid #447480;
+    // background-color: #6ab0c4;
+    // box-shadow: 1rem 1rem $foreground-color;
 
     h2 {
       @include reset;
@@ -33,12 +33,13 @@
       @include reset;
       font-size: 5vh;
       font-family: $funky-text;
-      color: #244149;
+      color: $font-black;
     }
   }
 
   #list {
     @include cen-col-without-justify;
+    width: 45%;
 
     h3 {
       font-size: 3.5vh;
@@ -50,9 +51,9 @@
     ul {
       @include reset;
       @include cen-col-without-justify;
-      width: 550.4px;
-      min-height: 600px;
-      max-height: 600px;
+      width: 100%;
+      min-height: 700px;
+      max-height: 700px;
       overflow-y: scroll;
     }
 
@@ -117,7 +118,7 @@
 
       .todo-checkbox:checked::before {
         transform: scale(1);
-        background-color: #49131e;
+        background-color: #2c5658;
       }
     }
 
@@ -128,16 +129,16 @@
 }
 
 #completed-todos {
-  background-color: #e05175;
-  border: 2px solid #411520;
+  background-color: #46b0b4;
+  border: 2px solid #225a5c;
   box-shadow: 1rem 1rem $foreground-color;
 
   li {
-    border: 2px solid #411520;
+    border: 2px solid #225a5c;
   }
 
   button {
-    background-color: #fa879e;
-    border: solid #411520;
+    background-color: #7fd2d5;
+    border: solid #225a5c;
   }
 }

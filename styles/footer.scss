@@ -1,0 +1,15 @@
+@import 'constants';
+@import 'mixins';
+
+
+footer {
+  width: 100%;
+  margin-top: 15vh;
+  @include flex-row;
+  justify-content: center;
+
+  p {
+    font-size: 2rem;
+    color: $font-black;
+  }
+}
