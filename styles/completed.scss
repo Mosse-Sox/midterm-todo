@@ -11,7 +11,7 @@
     @include cenetered-column;
     width: 50%;
     height: 60%;
-    margin-top: 10em;
+    // margin-top: 15em;
     padding-top: 3em;
     border: 2px solid #447480;
     background-color: #6ab0c4;
@@ -19,10 +19,14 @@
 
     h2 {
       @include reset;
-      font-size: 8vh;
+      font-size: 10vh;
       font-family: $funky-text;
       color: #ece991;
       margin-bottom: 30px;
+
+      i {
+        font-size: 15vh;
+      }
     }
 
     .progress-text {

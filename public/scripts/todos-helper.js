@@ -48,8 +48,9 @@ const renderTodos = (todos) => {
   }
 
   const $progressText = `<p class="progress-text">Good Work!<p>
-  <h2><i class="fa-solid fa-star"></i></h2>
+  <h2>✧<i class="fa-solid fa-star"></i>✧</h2>
   <p class="progress-text">You have completed ${completedTodos} todos!<p>`;
+
   progress.append($progressText);
 };
 
