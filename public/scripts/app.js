@@ -48,7 +48,7 @@ $(document).ready(function() {
     deleteTodo(todoId);
   });
 
-  $('.todo-list-container').on('dragstart', 'li', function(event) {
+  $('.todo-list-container ul').on('dragstart', 'li', function(event) {
     const dragItem = this;
     event.originalEvent.dataTransfer.effectAllowed = 'move';
     event.originalEvent.dataTransfer.setData('text/plain', ''); // Required for Firefox to work
@@ -56,46 +56,49 @@ $(document).ready(function() {
       $(dragItem).addClass('dragging');
     }, 0);
   });
-
-  $('.todo-list-container').on('dragover', 'li', function(event) {
+  
+  $('.todo-list-container ul').on('dragover', function(event) {
     event.preventDefault();
   });
-  $('.todo-list-container').on('drop', 'li', function(event) {
-    const dropItem = this;
+  
+  $('.todo-list-container ul').on('drop', function(event) {
+    event.preventDefault();
+    const dropList = $(this); // The column itself is the drop target
     const dragItem = $('.dragging');
-
-    if (dropItem !== dragItem[0]) {
-      const dropList = $(dropItem).parent();
-      const dragList = $(dragItem).parent();
-
-      // Move the dragged item to the new position if it is in the same category
-      if (dropList[0] === dragList[0]) {
-        const dropIndex = [...dropList.children()].indexOf(dropItem);
-        const dragIndex = [...dragList.children()].indexOf(dragItem[0]);
+  
+    if (dropList.children('li').length === 0) {
+      // If the column is empty, simply append the dragged item to it
+      dropList.append(dragItem);
+    } else {
+      // Otherwise, handle the drop as before (move the item within the same column or to a different column)
+      const dropItemElement = event.originalEvent.target.closest('li');
+      const dragItemElement = dragItem[0];
+  
+      if (dropItemElement && dragItemElement) {
+        const dropIndex = [...dropList.children()].indexOf(dropItemElement);
+        const dragIndex = [...dragItem.parent().children()].indexOf(dragItemElement);
         if (dragIndex < dropIndex) {
-          dropItem.parentNode.insertBefore(dragItem[0], dropItem.nextSibling);
+          dropItemElement.parentNode.insertBefore(dragItemElement, dropItemElement.nextSibling);
         } else {
-          dropItem.parentNode.insertBefore(dragItem[0], dropItem);
+          dropItemElement.parentNode.insertBefore(dragItemElement, dropItemElement);
         }
-      } else {
-        // Otherwise, move the dragged item to the new category
-        dropList.append(dragItem);
       }
-
-      // Perform additional logic if needed, e.g., update the category in the database
-      const todoId = dragItem.attr('id');
-      const newCategory = dropList.attr('id').replace('todo-', ''); // Extract the new category from the drop list ID
-      // Make an AJAX call to update the category in the database
-      updateTodoCategory(todoId, newCategory);
     }
-
+  
+    // Perform additional logic if needed, e.g., update the category in the database
+    const todoId = dragItem.attr('id');
+    const newCategory = dropList.attr('id').replace('todo-', ''); // Extract the new category from the drop list ID
+    // Make an AJAX call to update the category in the database
+    // updateTodoCategory(todoId, newCategory);
+  
     dragItem.removeClass('dragging');
   });
-
-  $('.todo-list-container').on('dragend', 'li', function(event) {
+  
+  $('.todo-list-container ul').on('dragend', 'li', function(event) {
     $(this).removeClass('dragging');
     $(this).removeClass('no-scrollbar');
   });
+  
 
   loadTodos();
 });
