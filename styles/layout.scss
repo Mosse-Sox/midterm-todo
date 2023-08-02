@@ -11,6 +11,7 @@ body {
   @include reset;
   @include flex-column;
   width: 100%;
+  min-width: 600px;
 }
 
 main {
@@ -88,5 +89,72 @@ main {
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  main {
+    display: flex;
+    align-content: space-evenly;
+  }
+  .todo-container {
+    @include flex-column;
+    align-items: center; /* Center the content horizontally */
+  }
+
+  .todo-list-container {
+    display: block;
+    flex-direction: column;
+    margin: 0 auto;
+
+    div ul {
+      min-height: 200px;
+      min-width: 500px;
+      max-height: 200px;
+      overflow-y: scroll;
+      margin-bottom: 40px;
+
+      .todo-text-html {
+        font-size: 3vh;
+      }
+    }
+    margin-bottom: 20em;
+  }
+
+  #page-breaker {
+    @include flex;
+    align-content: center;
+  }
+
+  #completed-container {
+    @include flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    align-content:space-around;
+    padding-top: 15em;
+
+    #progress-tracker {
+      min-width: 400px;
+      .progress-text {
+        font-size: 2.2vh;
+      }
+
+      h2 {
+        font-size: 6vh;
+        i {
+          font-size: 8vh;
+        }
+      }
+      padding-bottom: 2em;
+    }
+  }
+
+  #list {
+    min-width: 500px;
+    max-width: 500px;
+  }
+
+  footer {
+    padding-top: 15rem;
   }
 }
