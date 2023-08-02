@@ -32,74 +32,158 @@ main {
 }
 
 @media only screen and (max-width: 1024px) {
+  // flex-row
+  // .titles h3 {
+  //   font-size: 2.5vh;
+  // }
 
-  .titles h3 {
-    font-size: 2.5vh;
-  }
+  // .progress-text {
+  //   font-size: 2vh
+  // }
 
-  .progress-text {
-    font-size: 2vh
-  }
+  // .todo-list-container {
+  //   @include flex-row;
+  //   justify-content: space-evenly;
+  //   height: 600px;
+    
+  
+  //   div {
+  //     width: 25vw;
+  //     @include cen-col-without-justify;
 
-  .todo-list-container {
-    @include flex-row;
-    justify-content: space-evenly;
-    height: 650px;
   
-    div {
-      width: 25vw;
-      @include cen-col-without-justify;
-  
-  
-      li {
-        @include reset;
-        width: 90%;
-        height: 140px;
-        @include row-space-between;
-        align-content: center;
-        margin: 1em 0;
-        padding: 0 1rem;
-  
-  
-        input {
-          @include reset;
-        }
-  
-        .todo-text-html {
-          @include reset;
-          width: 40%;
-          display: flex;
-          text-align: center;
-          @include cenetered-column;
-          font-size: 1.5vh;
-        }
-  
-        button {
-          @include reset;
-          height: 20px;
-          width: 20px;
-          margin: 2.8rem 0;
-          font-size: 10px;
-        }
-  
-        .todo-checkbox {
-          appearance: none;
-          height: 20px;
-          width: 20px;
-        }
-      }
-    }
-  }
-}
+  //     ul {
+  //       min-width: 100px;
+  //       max-height: 200px;
+  //     }
 
-@media only screen and (max-width: 768px) {
+  //     li {
+  //       @include reset;
+  //       width: 90%;
+  //       height: 140px;
+  //       @include row-space-between;
+  //       align-content: center;
+  //       margin: 1em 0;
+  //       padding: 0 1rem;  
+  
+  //       input {
+  //         @include reset;
+  //       }
+  
+  //       .todo-text-html {
+  //         @include reset;
+  //         width: 40%;
+  //         display: flex;
+  //         text-align: center;
+  //         @include cenetered-column;
+  //         font-size: 1.5vh;
+  //       }
+  
+  //       button {
+  //         @include reset;
+  //         height: 20px;
+  //         width: 20px;
+  //         margin: 2.8rem 0;
+  //         font-size: 10px;
+  //       }
+  
+  //       .todo-checkbox {
+  //         appearance: none;
+  //         height: 20px;
+  //         width: 20px;
+  //       }
+  //     }
+  //   }
+  // }
+
   main {
     display: flex;
     align-content: space-evenly;
   }
   .todo-container {
     @include flex-column;
-    align-items: center; /* Center the content horizontally */
+    align-items: center;
+
+    .titles {
+      display: none;
+    }
+  }
+
+  .todo-list-container {
+    display: block;
+    flex-direction: column;
+    margin: 0 auto;
+
+    div ul {
+      min-height: 200px;
+      min-width: 600px;
+      max-height: 200px;
+      overflow-y: scroll;
+      margin-bottom: 40px;
+
+      .todo-text-html {
+        font-size: 3vh;
+      }
+    }
+    margin-bottom: 20em;
+  }
+
+  #page-breaker {
+    display: flex;
+    align-content: center;
+  }
+  
+  #completed-container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    align-content:space-around;
+    padding-top: 15em;
+
+    #progress-tracker {
+      min-width: 400px;
+      .progress-text {
+        font-size: 2.5vh;
+      }
+
+      h2 {
+        font-size: 8vh;
+        i {
+          font-size: 10vh;
+        }
+      }
+      padding-bottom: 2em;
+    }
+  }
+
+  #list {
+    min-width: 500px;
+    max-width: 500px;
+  }
+
+  footer {
+    padding-top: 15rem;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  body {
+    min-width: 650px;
+  }
+
+  main {
+    display: flex;
+    align-content: space-evenly;
+  }
+  .todo-container {
+    @include flex-column;
+    align-items: center;
+
+    .titles {
+      display: none;
+    }
   }
 
   .todo-list-container {
@@ -122,12 +206,12 @@ main {
   }
 
   #page-breaker {
-    @include flex;
+    display: flex;
     align-content: center;
   }
 
   #completed-container {
-    @include flex;
+    display: flex;
     flex-direction: column-reverse;
     align-items: center;
     align-content:space-around;
