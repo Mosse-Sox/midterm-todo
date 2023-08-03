@@ -2,7 +2,7 @@
 @import "mixins";
 
 .titles {
-  color:$font-black;
+  color: $font-black;
   font-family: $funky-text;
   @include flex-row;
   justify-content: space-between;
@@ -39,7 +39,6 @@
       align-content: center;
       margin: 1em 0;
       padding: 0 1rem;
-
 
       input {
         @include reset;
@@ -125,6 +124,14 @@
     transform: scale(1);
     background-color: #3e2e60;
   }
+
+  ::-webkit-scrollbar-track {
+    background: #a578b6; // Background color of the scrollbar track /
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #a578b6; // Color of the scrollbar thumb (the draggable part) /
+  }
 }
 
 #todo-products {
@@ -145,6 +152,14 @@
     transform: scale(1);
     background-color: #a0772b;
   }
+
+  ::-webkit-scrollbar-track {
+    background: #e3ce8c; // Background color of the scrollbar track /
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #e3ce8c; // Color of the scrollbar thumb (the draggable part) /
+  }
 }
 
 #todo-books {
@@ -158,12 +173,20 @@
 
   button {
     background-color: #eac5bf;
-    border: solid #96675c
+    border: solid #96675c;
   }
 
   .todo-checkbox:checked::before {
     transform: scale(1);
-    background-color: #96675c
+    background-color: #96675c;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #dea295; // Background color of the scrollbar track /
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #dea295; // Color of the scrollbar thumb (the draggable part) /
   }
 }
 
@@ -178,11 +201,19 @@
 
   button {
     background-color: #bfdaea;
-    border: solid #587b9f
+    border: solid #587b9f;
   }
 
   .todo-checkbox:checked::before {
     transform: scale(1);
-    background-color: #476480
+    background-color: #476480;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #95bade; // Background color of the scrollbar track /
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #95bade; // Color of the scrollbar thumb (the draggable part) /
   }
 }

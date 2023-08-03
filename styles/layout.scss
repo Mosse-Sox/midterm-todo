@@ -12,6 +12,7 @@ body {
   @include flex-column;
   width: 100%;
   min-width: 600px;
+  overflow-x: hidden;
 }
 
 main {
@@ -45,13 +46,13 @@ main {
   //   @include flex-row;
   //   justify-content: space-evenly;
   //   height: 600px;
-    
-  
+
+
   //   div {
   //     width: 25vw;
   //     @include cen-col-without-justify;
 
-  
+
   //     ul {
   //       min-width: 100px;
   //       max-height: 200px;
@@ -64,12 +65,12 @@ main {
   //       @include row-space-between;
   //       align-content: center;
   //       margin: 1em 0;
-  //       padding: 0 1rem;  
-  
+  //       padding: 0 1rem;
+
   //       input {
   //         @include reset;
   //       }
-  
+
   //       .todo-text-html {
   //         @include reset;
   //         width: 40%;
@@ -78,7 +79,7 @@ main {
   //         @include cenetered-column;
   //         font-size: 1.5vh;
   //       }
-  
+
   //       button {
   //         @include reset;
   //         height: 20px;
@@ -86,7 +87,7 @@ main {
   //         margin: 2.8rem 0;
   //         font-size: 10px;
   //       }
-  
+
   //       .todo-checkbox {
   //         appearance: none;
   //         height: 20px;
@@ -132,7 +133,7 @@ main {
     display: flex;
     align-content: center;
   }
-  
+
   #completed-container {
     display: flex;
     flex-direction: column-reverse;
