@@ -140,4 +140,12 @@
     background-color: #7fd2d5;
     border: solid #225a5c;
   }
+
+  ::-webkit-scrollbar-track {
+    background: #46b0b4; // Background color of the scrollbar track /
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #46b0b4; // Color of the scrollbar thumb (the draggable part) /
+  }
 }
