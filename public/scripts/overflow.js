@@ -9,9 +9,15 @@ function checkHorizontalOverflow() {
       textElement[0].scrollWidth > textElement[0].clientWidth;
 
     if (hasHorizontalOverflow) {
-      textElement.css("word-break", "break-all");
+      textElement.css({
+        "word-break": "break-all",
+        "overflow-x": "auto",
+      });
     } else {
-      textElement.css("word-break", "normal"); // Reset to default if no overflow
+      textElement.css({
+        "word-break": "normal",
+        "overflow-x": "visible",
+      });
     }
   });
 }
