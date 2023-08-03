@@ -9,7 +9,7 @@
 
   #progress-tracker {
     @include cenetered-column;
-    width: 50%;
+    width: 45%;
     height: 55%;
     margin-top: 8vh;
     padding-top: 3vh;
@@ -54,7 +54,7 @@
       width: 100%;
       min-height: 700px;
       max-height: 700px;
-      overflow-y: scroll;
+      overflow-y: auto;
     }
 
     li {

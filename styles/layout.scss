@@ -195,7 +195,7 @@ main {
       min-height: 200px;
       min-width: 500px;
       max-height: 200px;
-      overflow-y: scroll;
+      overflow-y: auto;
       margin-bottom: 40px;
 
       .todo-text-html {
