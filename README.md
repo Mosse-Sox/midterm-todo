@@ -1,7 +1,21 @@
 This is our Midterm Project for Lighthouse Labs. This app is a smart todo list that leverages OpenAI to categorize todos for users. Something we really tried to keep in mind while building this was the users experience across all devices, os, and browsers. The way users perform CRUD actions is based around ease for the user. You simply type in your todo, it get categorized for you, if you don't like the order or you meant the book version of harry potter vs the movie you can drag the item to the correct list or move them into the correct order. Marking a task complete moves it off your pending list into a completed task list, for those who like to track their progress. If its getting too cluttered, you can delete any items you want by pressing the x button on the righthand side of the todo box. 
 
+Authors Reyna Roma, Autumn Potts, LHL
+
 
 ## Preview 
+
+#### Main Page
+![Home Page - Lists](https://github.com/Mosse-Sox/midterm-todo/blob/master/public/images/homepage1.png?raw=true)
+
+#### Category Lists
+![Lists](https://github.com/Mosse-Sox/midterm-todo/blob/master/public/images/lists.png?raw=true)
+
+#### Completed to-do list and tracker
+![Completed List](https://github.com/Mosse-Sox/midterm-todo/blob/master/public/images/completedList.png?raw=true)
+
+#### Mobile Home Page
+![Mobile Home Page](https://github.com/Mosse-Sox/midterm-todo/blob/master/public/images/homepage2.png?raw=true)
 
 ## Getting Started
 
