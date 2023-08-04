@@ -74,18 +74,21 @@ const dropDecider = function (event, dropList, dragItem) {
     const dropItemElement = event.originalEvent.target.closest("li");
     const dragItemElement = dragItem[0];
 
+    // make an array of all the children of the droplist and collect the index of the drag/drop element
     if (dropItemElement && dragItemElement) {
       const dropIndex = [...dropList.children()].indexOf(dropItemElement);
       const dragIndex = [...dragItem.parent().children()].indexOf(
         dragItemElement
       );
 
+      // if the dragged items index is less then the drop items items then we insert before drop element
       if (dragIndex < dropIndex) {
         dropItemElement.parentNode.insertBefore(
           dragItemElement,
           dropItemElement.nextSibling
         );
 
+      // otherwise we insert after the drop element
       } else {
         dropItemElement.parentNode.insertBefore(
           dragItemElement,
